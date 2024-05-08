@@ -13,5 +13,20 @@ pipeline {
 
             }
         }
+        stage('Build') {
+            steps {
+                echo 'Building the application'
+                sh 'mvn clean package -DskipTests=true'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application'
+                sh 'mvn deploy'
+            }
+        }
+
+
+
     }
 }
