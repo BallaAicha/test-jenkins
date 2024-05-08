@@ -4,26 +4,20 @@ pipeline {
         maven 'maven383'
     }
     stages {
-        stage('Unit  Tests') {
+        stage('Unit Tests') {
             steps {
                 echo 'Running Unit Tests'
                 sh 'mvn --version'
                 sh 'mvn test'
-                JUnit 'target/surefire-reports/*.xml'
-
-
+                junit 'target/surefire-reports/*.xml'
             }
         }
         stage('package') {
             steps {
                 echo 'Packaging the application'
-                sh 'mvn  package -DskipTests=true'
+                sh 'mvn package -DskipTests=true'
                 archiveArtifacts artifacts: 'target/*.jar'
             }
         }
-
-
-
-
     }
 }
