@@ -14,10 +14,11 @@ pipeline {
 
             }
         }
-        stage('Build') {
+        stage('package') {
             steps {
-                echo 'Building the application'
-                sh 'mvn clean package -DskipTests=true'
+                echo 'Packaging the application'
+                sh 'mvn  package -DskipTests=true'
+                archiveArtifacts artifacts: 'target/*.jar'
             }
         }
 
