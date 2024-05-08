@@ -9,6 +9,7 @@ pipeline {
                 echo 'Running Unit Tests'
                 sh 'mvn --version'
                 sh 'mvn test'
+                JUnit 'target/surefire-reports/*.xml'
 
 
             }
@@ -19,12 +20,7 @@ pipeline {
                 sh 'mvn clean package -DskipTests=true'
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the application'
-                sh 'mvn deploy'
-            }
-        }
+
 
 
 
