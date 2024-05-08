@@ -4,9 +4,13 @@ pipeline {
         maven 'maven383'
     }
     stages {
-        stage('Get maven version') {
+        stage('Unit  Tests') {
             steps {
+                echo 'Running Unit Tests'
                 sh 'mvn --version'
+                sh 'mvn test'
+
+
             }
         }
     }
